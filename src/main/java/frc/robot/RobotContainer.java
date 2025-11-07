@@ -4,15 +4,21 @@
 
 package frc.robot;
 
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class RobotContainer {
+  public final MotorSubsystem m_MotorSubsystem = new MotorSubsystem();
+  public final CommandXboxController controller = new CommandXboxController(0);
   public RobotContainer() {
     configureBindings();
   }
 
-  private void configureBindings() {}
+  private void configureBindings() {
+    m_MotorSubsystem.setDefaultCommand(m_MotorSubsystem.Run1(() -> controller.getRightY())); //runs motor at speed porportional to the right joystick on the y-axis
+  }
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");

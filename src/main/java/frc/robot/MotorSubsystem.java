@@ -12,3 +12,34 @@ import com.revrobotics.spark.SparkMax;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.MotorConstants;
+
+public class MotorSubsystem extends SubsystemBase {
+  private final SparkMax motor1 = new SparkMax(MotorConstants.MOTOR_1_ID, MotorType.kBrushless);
+  /** Creates a new MotorSubsystem. */
+  public RelativeEncoder encoder = motor1.getEncoder();
+  public Command Run1(DoubleSupplier speed){
+    return runOnce(()-> motor1.set(speed.getAsDouble() * MotorConstants.motorSpeedMultiplier));
+  }
+  public MotorSubsystem() {}
+  public Command RunMotors(DoubleSupplier speed)
+  {
+    return runOnce(
+      () -> {
+        motor1.set(speed.getAsDouble());
+      }
+      );}
+    public Command StopMotors()
+    {
+    return runOnce(
+      () -> {
+        motor1.set(0);
+      }
+    );
+    
+    }
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+  }
+}

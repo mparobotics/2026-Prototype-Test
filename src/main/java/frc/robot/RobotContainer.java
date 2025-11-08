@@ -10,14 +10,15 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class RobotContainer {
-  public final MotorSubsystem m_MotorSubsystem = new MotorSubsystem();
+  public final MotorSubsystem m_MotorSubsystem = new MotorSubsystem(); //m_MotorSubsystem is an instance of a motor subsystem class 
   public final CommandXboxController controller = new CommandXboxController(0);
   public RobotContainer() {
     configureBindings();
   }
 
-  private void configureBindings() {
-    m_MotorSubsystem.setDefaultCommand(m_MotorSubsystem.Run1(() -> controller.getRightY())); //runs motor at speed porportional to the right joystick on the y-axis
+  private void configureBindings() { 
+    m_MotorSubsystem.setDefaultCommand(m_MotorSubsystem.RunMotors(() -> controller.getRightY())); 
+    //runs motor at speed porportional to the right joystick on the y-axis
   }
 
   public Command getAutonomousCommand() {

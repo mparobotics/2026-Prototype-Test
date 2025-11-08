@@ -48,4 +48,18 @@ public class MotorSubsystem extends SubsystemBase {
         motor1.set(speed.getAsDouble() * MotorConstants.motorSpeedMultiplier); 
       }
       );}
-  public Command StopMoto
+  public Command StopMotors(){
+    return runOnce(
+      () -> {
+        motor1.set(0);
+      }
+    );
+    
+  }
+  @Override
+  public void periodic() {
+    //we use the getVelocity function from the encoder
+    SmartDashboard.putNumber("speed", encoder.getVelocity());
+    // This method will be called once per scheduler run
+  }
+}

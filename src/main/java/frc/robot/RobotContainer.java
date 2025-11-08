@@ -21,4 +21,7 @@ public class RobotContainer {
     //runs motor at speed porportional to the right joystick on the y-axis
   }
 
-  public Command getAutonomousCommand(
+  public Command getAutonomousCommand() {
+    return Commands.print("No autonomous command configured");
+  }
+}

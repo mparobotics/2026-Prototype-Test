@@ -13,4 +13,24 @@ import com.revrobotics.spark.SparkMax;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-//cl
+//classes can't run commands but inheriting from the subsystem base allows it to run commands
+public class MotorSubsystem extends SubsystemBase { 
+  private final SparkMax motor1 = new SparkMax(1, MotorType.kBrushless); 
+
+  /** Creates a new MotorSubsystem. */
+  public MotorSubsystem() {}
+
+  public Command RunMotors(DoubleSupplier speed){
+    return runOnce(
+      () -> {
+        motor1.set(MathUtil.applyDeadband(speed.getAsDouble(), 0.05) * 0.5);
+      }
+
+    );
+  }
+
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+  }
+}

@@ -6,6 +6,6 @@ package frc.robot;
 
 /** Add your docs here. */
 public class MotorConstants {
-    public static final int MOTOR_1_ID = 1; //placeholder
+    public static final int MOTOR_1_ID = 15; 
     
 }

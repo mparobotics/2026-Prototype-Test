@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 //classes can't run commands but inheriting from the subsystem base allows it to run commands
 public class MotorSubsystem extends SubsystemBase { 
-  private final SparkMax motor1 = new SparkMax(1, MotorType.kBrushless); 
+  private final SparkMax motor1 = new SparkMax(MotorConstants.MOTOR_1_ID, MotorType.kBrushless); 
 
   /** Creates a new MotorSubsystem. */
   public MotorSubsystem() {}
